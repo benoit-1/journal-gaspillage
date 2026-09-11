@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Journal des quantités — suivi anti-gaspillage</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAADWElEQVRYhcWX3W9URRiHn3fOLsFlZbdlS7fACiJpC1RTSGxS4ycxMUYUiOGCgCQavQIvNPF/8EaNiVySGBq9MZpoiAkXxq9INGgbTZcKLAppu90Wy3bPftjdnTPjBVBKzW7PNtv2d3WSmXee38z7zswZYZ7Sro1Zq98UpfZjbScQpjmaAS4iMtARVqdFpHqnQe7C9UHgYyDSJGgNSdKz6lAiIlfmDNyGfw6o5YXPacoxTn97VP6StGtj4KVY9pkvkMhgR1j1KWv1yRWHA1i7N+N6RwOCeglsw/EzpSrfjkwDsG9XjMh9gaXYOC5pV+dpsNq1Z3nr0xEyuTIA8ehaPjjSTcCRRSL/p6xqFA4wnp2dgwNkZmZJZ8t1ImqqZUlV3xoO3jPbYEDRGl5SCpa27Yw2vNDVQgRLFMv+rhaM13gdAUja1b4js/kKH312iV+S/2DMvWFKCf09MU4c7iIaXtN8A9Wq4eR7FxidLNbtt61jHR++/SjBgL/F9Z2Cs+fHFoUDXJso8vX5cb/D+jfww+AUAE58I68+18aWuUiHB3Zv5pXnt3KwJ0RI4PuhyeYa0NqQGssDioef3M6RZx/kxc0CCO2P9XDqQAQKhu37dvL6DofUaB7tsyh9GZiY/hfPWHDu56nOEqfPlenrXYfCYW9vmJ+++JNPRoqkhjJcMgGMZ8lMl5pnwC1qAJzERp5YC+tD0PpIG1sVWHv3Tnc2dfBGXwgF5Eu6eQYq2gOEzj0bqFzNkXVzDAdjPN1m+G2oQP/L3RzdGSK+IUgpr7FApWJ8GfB1fFUqBsTBmRzl/W/S/OrCj1Oa3jVw4+dhTuTjPJNQXP/uDwZGinjAbNVrnoFy1QOrGZ63vSYvjnHu9vdocpwzyQUxPlfAVwrKVX+DzdettC2uuifhuwNJrlx3MdZibGNnvRJBidC9LcI7x3bV7Fc3Bb9fzpIrVBoCL1Rxtv5uqLsCf48XGLvhbz/X0qZYiIe21P7laOg2XA4pbj0aVks5ZWFw1fAiKaXgzKrx4Uux1joTrrmA2D0rzM961tmhRMRzrDoMTK0g3Cg4nojITQXQHpWrnnUeBxleAXhWwYH4+sBZmPc6BrDWBicK5jWsPQbsBlqaBHWByyLylTbqVCIiN+80/AcLFVCMg7ORHgAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cahier des restes">
+<meta name="theme-color" content="#3063BA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -155,27 +161,6 @@
     display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle;
   }
 
-  .voice-box{ margin-bottom:20px; }
-  .voice-btn{
-    width:100%; padding:13px; border:1px solid var(--primary); background:#fff; color:var(--primary-dark); border-radius:9px;
-    font-family:'Inter', sans-serif; font-size:14px; font-weight:600; cursor:pointer; letter-spacing:0.01em; transition:background .15s;
-  }
-  .voice-btn:hover{ background:var(--bg); }
-  .voice-btn.listening{
-    background:var(--danger); border-color:var(--danger); color:#fff;
-    animation:pulse 1.4s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{ box-shadow:0 0 0 0 rgba(192,69,58,0.35); }
-    50%{ box-shadow:0 0 0 8px rgba(192,69,58,0); }
-  }
-  .voice-transcript{
-    margin-top:10px; padding:12px 14px; background:var(--bg); border-left:3px solid var(--primary); border-radius:8px;
-    font-family:'Inter', sans-serif; font-style:italic; font-size:13.5px; color:var(--ink-soft); line-height:1.5;
-    min-height:20px;
-  }
-  .voice-hint{ font-size:11px; color:var(--ink-soft); margin-top:6px; font-family:'Inter', sans-serif; }
-
 </style>
 </head>
 <body>
@@ -210,12 +195,6 @@
   <!-- SAISIE -->
   <div id="view-saisie" class="panel">
     <h2>Ajouter une journée</h2>
-
-    <div class="voice-box">
-      <button type="button" class="voice-btn" id="voice-btn">🎙️ Dicter la journée</button>
-      <div class="voice-transcript" id="voice-transcript" style="display:none;"></div>
-      <div class="voice-hint" id="voice-hint"></div>
-    </div>
 
     <div class="row2">
       <div class="field">
@@ -258,10 +237,6 @@
   <!-- PREVISION -->
   <div id="view-prev" class="panel" style="display:none;">
     <h2>Quantité à prévoir pour un menu futur</h2>
-    <div class="field">
-      <label>Plat au menu</label>
-      <select id="prev-plat"></select>
-    </div>
     <div class="row2">
       <div class="field">
         <label>Résidents attendus</label>
@@ -272,7 +247,7 @@
         <input type="number" id="prev-personnel" min="0" value="0">
       </div>
     </div>
-    <div id="prev-result"></div>
+    <div id="prev-list"></div>
   </div>
 
 </div>
@@ -302,7 +277,7 @@ function setStatus(msg){ statusEl.textContent = msg; }
 
 const SAMPLE_ENTRIES = [
   { id:'s1', date:'2026-09-08', convives:42, personnel:16, rows:[
-    { cat:'Entrée',  nom:'Salade de tomates',   unit:'kg', ramequins:0,  assiettes:42, prep:3.0, reste:0.2 },
+    { cat:'Entrée',  nom:'Salade de tomates',   unit:'kg', ramequins:0,  assiettes:42, resteRamequins:0, resteAssiettes:2, prep:3.0, reste:0.2 },
     { cat:'Plat',    type:'Viande',   nom:'Rôti de porc',        unit:'kg', prep:8.5,  reste:0.9 },
     { cat:'Légumes', nom:'Haricots verts', unit:'kg', prep:2.5, reste:0.4 },
     { cat:'Légumes', nom:'Carottes',       unit:'kg', prep:2.0, reste:0.5 },
@@ -310,7 +285,7 @@ const SAMPLE_ENTRIES = [
     { cat:'Dessert', nom:'Tarte aux pommes', unit:'kg', prep:3.2, reste:0.15 },
   ]},
   { id:'s2', date:'2026-09-07', convives:38, personnel:10, rows:[
-    { cat:'Entrée',  nom:'Velouté de courge',   unit:'kg', ramequins:26, assiettes:12, prep:4.0, reste:1.2 },
+    { cat:'Entrée',  nom:'Velouté de courge',   unit:'kg', ramequins:26, assiettes:12, resteRamequins:5, resteAssiettes:2, prep:4.0, reste:1.2 },
     { cat:'Plat',    type:'Poisson',  nom:'Filet de colin',      unit:'kg', prep:5.2, reste:0.3 },
     { cat:'Légumes', nom:'Épinards', unit:'kg', prep:1.8, reste:0.5 },
     { cat:'Légumes', nom:'Poireaux', unit:'kg', prep:1.8, reste:0.4 },
@@ -318,7 +293,7 @@ const SAMPLE_ENTRIES = [
     { cat:'Dessert', nom:'Flan vanille', unit:'nombre', prep:40, reste:6 },
   ]},
   { id:'s3', date:'2026-09-06', convives:45, personnel:20, rows:[
-    { cat:'Entrée',  nom:'Carottes râpées',     unit:'kg', ramequins:0,  assiettes:45, prep:2.8, reste:0.1 },
+    { cat:'Entrée',  nom:'Carottes râpées',     unit:'kg', ramequins:0,  assiettes:45, resteRamequins:0, resteAssiettes:1, prep:2.8, reste:0.1 },
     { cat:'Plat',    type:'Viande',   nom:'Poulet basquaise',    unit:'kg', prep:9.0, reste:0.4 },
     { cat:'Légumes', nom:'Courgettes',           unit:'kg', prep:2.0, reste:0.15 },
     { cat:'Légumes', nom:'Tomates provençales',  unit:'kg', prep:2.0, reste:0.1 },
@@ -327,7 +302,7 @@ const SAMPLE_ENTRIES = [
     { cat:'Dessert', nom:'Crumble aux pommes — Biscuits carrés',  unit:'nombre', prep:90,  reste:5 },
   ]},
   { id:'s4', date:'2026-09-05', convives:40, personnel:9, rows:[
-    { cat:'Entrée',  nom:'Taboulé',             unit:'kg', ramequins:30, assiettes:10, prep:3.5, reste:0.9 },
+    { cat:'Entrée',  nom:'Taboulé',             unit:'kg', ramequins:30, assiettes:10, resteRamequins:4, resteAssiettes:1, prep:3.5, reste:0.9 },
     { cat:'Plat',    type:'Poisson',  nom:'Pavé de saumon',      unit:'kg', prep:6.0, reste:0.25 },
     { cat:'Légumes', nom:'Haricots beurre',   unit:'kg', prep:2.0, reste:0.3 },
     { cat:'Légumes', nom:'Poivrons grillés',  unit:'kg', prep:2.0, reste:0.35 },
@@ -415,7 +390,7 @@ function addDessertComponent(list){
   block.className = 'component-block';
   block.innerHTML = `
     <div class="field"><label>Composant — nom</label><input type="text" class="des-nom" placeholder="ex. tarte décongelée, compote de pomme, biscuits..."></div>
-    <div class="field"><label>Unité</label><select class="des-unit"><option value="kg">kg</option><option value="nombre">nombre</option></select></div>
+    <div class="field"><label>Unité</label><select class="des-unit"><option value="nombre">nombre</option><option value="kg">kg</option></select></div>
     <div class="field"><label>Préparé</label><input type="number" class="des-prep" min="0" step="0.1"></div>
     <div class="field"><label>Reste</label><input type="number" class="des-reste" min="0" step="0.1"></div>
     <button type="button" class="rm-component" title="retirer">×</button>
@@ -436,6 +411,8 @@ function renderRowFields(row, cat){
     container.innerHTML = `
       <div class="field"><label>Nombre de ramequins</label><input type="number" class="ent-ramequins" min="0" step="1" placeholder="ex. 25"></div>
       <div class="field"><label>Nombre d'assiettes</label><input type="number" class="ent-assiettes" min="0" step="1" placeholder="ex. 15"></div>
+      <div class="field"><label>Reste (ramequins)</label><input type="number" class="ent-reste-ramequins" min="0" step="1" placeholder="ex. 3"></div>
+      <div class="field"><label>Reste (assiettes)</label><input type="number" class="ent-reste-assiettes" min="0" step="1" placeholder="ex. 2"></div>
       <div class="field"><label>Préparé (kg)</label><input type="number" class="d-prep" min="0" step="0.1" placeholder="ex. 4.5"></div>
       <div class="field"><label>Reste (kg)</label><input type="number" class="d-reste" min="0" step="0.1" placeholder="ex. 0.4"></div>
     `;
@@ -533,11 +510,15 @@ document.getElementById('save-entry').addEventListener('click', async ()=>{
     if(cat === 'Entrée'){
       const ramequins = Math.max(0, parseInt(r.querySelector('.ent-ramequins').value)||0);
       const assiettes = Math.max(0, parseInt(r.querySelector('.ent-assiettes').value)||0);
+      let resteRamequins = Math.max(0, parseInt(r.querySelector('.ent-reste-ramequins').value)||0);
+      let resteAssiettes = Math.max(0, parseInt(r.querySelector('.ent-reste-assiettes').value)||0);
+      if(resteRamequins > ramequins) resteRamequins = ramequins;
+      if(resteAssiettes > assiettes) resteAssiettes = assiettes;
       const prep = Math.max(0, parseFloat(r.querySelector('.d-prep').value)||0);
       let reste = Math.max(0, parseFloat(r.querySelector('.d-reste').value)||0);
       if(reste > prep) reste = prep;
       if(prep > 0){
-        rows.push({ cat:'Entrée', nom: parentNom, unit:'kg', prep, reste, ramequins, assiettes });
+        rows.push({ cat:'Entrée', nom: parentNom, unit:'kg', prep, reste, ramequins, assiettes, resteRamequins, resteAssiettes });
       }
     } else if(cat === 'Légumes'){
       for(let i=1;i<=2;i++){
@@ -617,15 +598,22 @@ function renderHisto(){
       const consomme = r.prep - r.reste;
       const perPers = consomme / totalPersonnes;
       const wastePct = r.prep>0 ? (r.reste/r.prep*100) : 0;
-      const cls = wasteBadgeClass(wastePct);
+
+      const totalPieces = (r.ramequins||0) + (r.assiettes||0);
+      const resteTotalPieces = (r.resteRamequins||0) + (r.resteAssiettes||0);
+      const usePieces = r.cat === 'Entrée' && totalPieces > 0;
+      const badgePct = usePieces ? (totalPieces>0 ? (resteTotalPieces/totalPieces*100) : 0) : wastePct;
+      const badgeText = usePieces ? `${resteTotalPieces} pièce${resteTotalPieces===1?'':'s'}` : fmtQty(r.reste, r.unit);
+      const cls = wasteBadgeClass(badgePct);
+
       const extras = [];
-      if(r.ramequins) extras.push(`${r.ramequins} ramequins`);
-      if(r.assiettes) extras.push(`${r.assiettes} assiettes`);
+      if(r.ramequins) extras.push(`${r.ramequins} ramequins${r.resteRamequins ? ` (reste ${r.resteRamequins})` : ''}`);
+      if(r.assiettes) extras.push(`${r.assiettes} assiettes${r.resteAssiettes ? ` (reste ${r.resteAssiettes})` : ''}`);
       if(r.type) extras.push(r.type);
       if(r.prepNb) extras.push(`${r.prepNb} unités préparées`);
       return `<div class="dish-line">
         <span><span class="cat-dot" style="background:${CATEGORY_COLORS[r.cat]||'#999'}"></span>${r.cat}${r.nom?` — ${r.nom}`:''} · ${fmtQty(perPers, r.unit)}/pers.${extras.length?` · ${extras.join(' · ')}`:''}</span>
-        <span class="badge ${cls}">reste ${wastePct.toFixed(0)}%</span>
+        <span class="badge ${cls}">${badgeText} (${badgePct.toFixed(0)}%)</span>
       </div>`;
     }).join('');
     return `<div class="day-card">
@@ -659,14 +647,14 @@ function computeStats(){
       const wastePct = r.prep>0 ? (r.reste/r.prep*100) : 0;
 
       const skey = `${r.cat}__${r.unit}`;
-      if(!stats[skey]) stats[skey] = { cat:r.cat, unit:r.unit, count:0, sumPerPers:0, sumWastePct:0 };
+      if(!stats[skey]) stats[skey] = { cat:r.cat, unit:r.unit, count:0, sumPerPers:0, sumWastePct:0, sumReste:0 };
       const s = stats[skey];
-      s.count += 1; s.sumPerPers += perPers; s.sumWastePct += wastePct;
+      s.count += 1; s.sumPerPers += perPers; s.sumWastePct += wastePct; s.sumReste += r.reste;
 
       const dkey = r.nom ? `${r.nom} (${r.cat})` : r.cat;
-      if(!dishStats[dkey]) dishStats[dkey] = { cat:r.cat, nom:r.nom, unit:r.unit, count:0, sumPerPers:0, sumWastePct:0 };
+      if(!dishStats[dkey]) dishStats[dkey] = { cat:r.cat, nom:r.nom, unit:r.unit, count:0, sumPerPers:0, sumWastePct:0, sumReste:0 };
       const d = dishStats[dkey];
-      d.count += 1; d.sumPerPers += perPers; d.sumWastePct += wastePct;
+      d.count += 1; d.sumPerPers += perPers; d.sumWastePct += wastePct; d.sumReste += r.reste;
     });
   });
 
@@ -706,6 +694,7 @@ function renderMoyennes(){
     .map(s=>{
       const avgPerPers = s.sumPerPers / s.count;
       const avgWaste = s.sumWastePct / s.count;
+      const avgResteQty = s.sumReste / s.count;
       const cls = wasteBadgeClass(avgWaste);
       const barPct = Math.min(100, (avgWaste/maxWaste)*100);
       return `<div class="avg-row">
@@ -714,7 +703,7 @@ function renderMoyennes(){
           <span>${fmtQty(avgPerPers, s.unit)} / pers. en moyenne consommés</span>
         </div>
         <div class="bar-track"><div class="bar-fill ${cls}" style="width:${barPct}%"></div></div>
-        <div class="avg-note">${s.count} saisie(s) · reste moyen ${avgWaste.toFixed(0)}%</div>
+        <div class="avg-note">${s.count} saisie(s) · reste moyen ${fmtQty(avgResteQty, s.unit)} (${avgWaste.toFixed(0)}%)</div>
       </div>`;
     }).join('');
 
@@ -735,88 +724,53 @@ function renderAll(){
 }
 
 // ---- prévision ----
-const prevPlatEl = document.getElementById('prev-plat');
 const prevResidentsEl = document.getElementById('prev-residents');
 const prevPersonnelEl = document.getElementById('prev-personnel');
 
-function buildCategoryCombos(stats){
-  const map = new Map();
-  CATS.forEach(c => map.set(`${c}__${CATEGORY_CONFIG[c].primaryUnit}`, { cat:c, unit:CATEGORY_CONFIG[c].primaryUnit }));
-  Object.keys(stats).forEach(k=>{
-    if(!map.has(k)){ const [c,u] = k.split('__'); map.set(k, { cat:c, unit:u }); }
-  });
-  return map;
-}
-
-function populatePrevisionSelect(){
-  const { dishStats, stats } = computeStats();
-  const known = Object.entries(dishStats)
-    .filter(([,d]) => d.nom)
-    .sort((a,b)=> a[0].localeCompare(b[0]));
-
-  let html = '';
-  if(known.length){
-    html += `<optgroup label="Plats déjà suivis">`;
-    html += known.map(([key]) => `<option value="dish::${key}">${key}</option>`).join('');
-    html += `</optgroup>`;
-  }
-  const combos = buildCategoryCombos(stats);
-  html += `<optgroup label="Nouveau plat, par catégorie">`;
-  html += Array.from(combos.entries()).map(([key,{cat,unit}]) =>
-    `<option value="cat::${key}">Nouveau plat — ${catLabel(cat,unit)}</option>`).join('');
-  html += `</optgroup>`;
-  prevPlatEl.innerHTML = html;
-}
-
 function renderPrevision(){
-  populatePrevisionSelect();
-  updatePrevisionResult();
+  renderPrevisionList();
 }
 
-function updatePrevisionResult(){
-  const resultEl = document.getElementById('prev-result');
-  const { stats, dishStats } = computeStats();
-  const [kind, key] = prevPlatEl.value.split('::');
+function renderPrevisionList(){
+  const listEl = document.getElementById('prev-list');
+  const { dishStats } = computeStats();
   const residents = Math.max(0, parseInt(prevResidentsEl.value)||0);
   const personnel = Math.max(0, parseInt(prevPersonnelEl.value)||0);
+  const totalPersonnes = residents + personnel;
+  const margin = 1.05;
 
-  let source, label;
-  if(kind === 'dish' && dishStats[key]){
-    source = dishStats[key];
-    label = key;
-  } else if(kind === 'cat' && stats[key]){
-    source = stats[key];
-    const [c,u] = key.split('__');
-    label = catLabel(c,u);
-  }
+  const dishes = Object.entries(dishStats)
+    .filter(([,d]) => d.nom)
+    .map(([key,d]) => ({
+      key,
+      cat: d.cat,
+      unit: d.unit,
+      avgPerPers: d.sumPerPers / d.count,
+      avgWaste: d.sumWastePct / d.count,
+      count: d.count,
+    }))
+    .sort((a,b)=> a.cat.localeCompare(b.cat) || a.key.localeCompare(b.key));
 
-  if(!source || source.count===0){
-    resultEl.innerHTML = `<div class="empty">Pas encore d'historique pour ce choix — enregistrez au moins une journée avec ce plat (ou sa catégorie) pour obtenir une suggestion.</div>`;
+  if(dishes.length === 0){
+    listEl.innerHTML = `<div class="empty">Pas encore d'historique — enregistrez quelques journées pour voir apparaître vos plats ici.</div>`;
     return;
   }
 
-  const avgPerPers = source.sumPerPers / source.count;
-  const avgWaste = source.sumWastePct / source.count;
-  const totalPersonnes = residents + personnel;
-  const margin = 1.05;
-  const suggestedQty = avgPerPers * totalPersonnes * margin;
-  const unit = source.unit;
-
-  resultEl.innerHTML = `
-    <div class="tip" style="margin-top:18px; border-left-color:var(--olive);">
-      <b>${label} —</b> pour ${residents} résident(s) et ${personnel} membre(s) du personnel (${totalPersonnes} couverts), prévoyez environ
-      <b>${fmtQty(suggestedQty, unit)}</b>, soit ${fmtQty(avgPerPers, unit)} par personne + une petite marge de 5%.
-    </div>
-    <div class="avg-note" style="margin-top:10px;">
-      Basé sur ${source.count} saisie(s) passée(s) · reste moyen historique : ${avgWaste.toFixed(0)}%
-      ${avgWaste>=15 ? ` — ce plat a tendance à gaspiller, la quantité ci-dessus reste volontairement prudente.` : ''}
-    </div>
-  `;
+  listEl.innerHTML = `<div style="margin-top:18px;">` + dishes.map(d=>{
+    const suggestedQty = d.avgPerPers * totalPersonnes * margin;
+    const cls = wasteBadgeClass(d.avgWaste);
+    return `<div class="dish-line" style="padding:12px 0;">
+      <span><span class="cat-dot" style="background:${CATEGORY_COLORS[d.cat]||'#999'}"></span><b>${d.key}</b> · ${fmtQty(d.avgPerPers, d.unit)}/pers.</span>
+      <span style="text-align:right;">
+        <span class="badge ${cls}">${fmtQty(suggestedQty, d.unit)} pour ${totalPersonnes}</span>
+      </span>
+    </div>`;
+  }).join('') + `</div>
+  <div class="avg-note" style="margin-top:10px;">Quantités calculées sur l'historique de chaque plat, + une petite marge de 5% pour ne pas manquer.</div>`;
 }
 
-prevPlatEl.addEventListener('change', updatePrevisionResult);
-prevResidentsEl.addEventListener('input', updatePrevisionResult);
-prevPersonnelEl.addEventListener('input', updatePrevisionResult);
+prevResidentsEl.addEventListener('input', renderPrevisionList);
+prevPersonnelEl.addEventListener('input', renderPrevisionList);
 
 document.getElementById('reset-all').addEventListener('click', async ()=>{
   if(!confirm('Effacer tout le journal ? Cette action est irréversible.')) return;
@@ -864,180 +818,6 @@ importInput.addEventListener('change', (e)=>{
   };
   reader.readAsText(file);
 });
-
-// ---- dictée vocale ----
-const voiceBtn = document.getElementById('voice-btn');
-const voiceTranscriptEl = document.getElementById('voice-transcript');
-const voiceHintEl = document.getElementById('voice-hint');
-const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-let recognition = null;
-let listening = false;
-let finalTranscript = '';
-
-const VOICE_SYSTEM_PROMPT = `Tu extrais les informations d'une journée de restauration collective (résidents + personnel d'un établissement) à partir d'une dictée en français, et tu réponds UNIQUEMENT avec un objet JSON valide, sans texte autour, sans balises markdown.
-
-Schéma exact à respecter (mets 0, "" ou tableau vide quand une information n'est pas donnée) :
-{
-  "convives": nombre de résidents (entier),
-  "personnel": nombre de membres du personnel qui mangent (entier),
-  "entrees": [ { "nom": "string", "ramequins": entier, "assiettes": entier, "prep_kg": nombre, "reste_kg": nombre } ],
-  "plats": [ { "type": "Viande" ou "Poisson", "nom": "string", "prep_kg": nombre, "reste_kg": nombre } ],
-  "legumes": [ { "nom": "string", "prep_kg": nombre, "reste_kg": nombre } ],
-  "fromage": { "prep_nb": entier, "reste_nb": entier },
-  "desserts": [ { "nom_general": "string", "composants": [ { "nom": "string", "unite": "kg" ou "nombre", "prep": nombre, "reste": nombre } ] } ]
-}
-
-Règles : convertis les grammes en kg (ex. "500 grammes" -> 0.5). "légumes" contient au maximum 2 éléments. Si un dessert simple est décrit (ex. "une tarte aux pommes, 3 kilos, il reste 200 grammes"), mets un seul composant dans "composants". Si le dessert est composé (ex. "un crumble avec de la compote et des biscuits"), décompose-le en plusieurs composants. Le mot "reste" ou "il en est resté" désigne toujours la quantité de reste, jamais la quantité préparée.`;
-
-function updateVoiceTranscript(text){
-  voiceTranscriptEl.style.display = text ? 'block' : 'none';
-  voiceTranscriptEl.textContent = text || '';
-}
-
-function setupRecognition(){
-  if(!SpeechRecognitionCtor) return null;
-  const r = new SpeechRecognitionCtor();
-  r.lang = 'fr-FR';
-  r.continuous = true;
-  r.interimResults = true;
-  r.onresult = (e)=>{
-    let interim = '';
-    for(let i=e.resultIndex; i<e.results.length; i++){
-      const t = e.results[i][0].transcript;
-      if(e.results[i].isFinal){ finalTranscript += t + ' '; }
-      else{ interim += t; }
-    }
-    updateVoiceTranscript(finalTranscript + interim);
-  };
-  r.onerror = (e)=>{
-    voiceHintEl.textContent = "Erreur micro : " + e.error + ". Vérifiez que l'accès au micro est autorisé pour cette page.";
-    stopListening(false);
-  };
-  r.onend = ()=>{
-    if(listening){ try{ r.start(); }catch(e){} } // continuous peut se couper seul, on relance
-  };
-  return r;
-}
-
-async function startListening(){
-  if(!SpeechRecognitionCtor){
-    voiceHintEl.textContent = "La reconnaissance vocale n'est pas disponible dans ce navigateur (essayez Chrome).";
-    return;
-  }
-  finalTranscript = '';
-  updateVoiceTranscript('');
-  voiceHintEl.textContent = '';
-  recognition = setupRecognition();
-  try{
-    recognition.start();
-    listening = true;
-    voiceBtn.textContent = '⏹ Arrêter et remplir le formulaire';
-    voiceBtn.classList.add('listening');
-  }catch(e){
-    voiceHintEl.textContent = "Impossible de démarrer le micro : " + e.message;
-  }
-}
-
-function stopListening(shouldAnalyze){
-  listening = false;
-  if(recognition){ try{ recognition.stop(); }catch(e){} }
-  voiceBtn.textContent = '🎙️ Dicter la journée';
-  voiceBtn.classList.remove('listening');
-  if(shouldAnalyze && finalTranscript.trim()){ analyzeTranscript(finalTranscript.trim()); }
-}
-
-voiceBtn.addEventListener('click', ()=>{
-  if(listening){ stopListening(true); } else { startListening(); }
-});
-
-async function analyzeTranscript(transcript){
-  voiceHintEl.textContent = 'Analyse de la dictée en cours…';
-  try{
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST',
-      headers:{ 'Content-Type':'application/json' },
-      body: JSON.stringify({
-        model:'claude-sonnet-4-6',
-        max_tokens:1000,
-        system: VOICE_SYSTEM_PROMPT,
-        messages:[{ role:'user', content: transcript }],
-      }),
-    });
-    const data = await resp.json();
-    const text = (data.content||[]).map(b=>b.text||'').join('');
-    const clean = text.replace(/```json|```/g,'').trim();
-    const parsed = JSON.parse(clean);
-    applyParsedDay(parsed);
-    voiceHintEl.textContent = "Formulaire rempli — vérifiez les champs avant d'enregistrer.";
-  }catch(e){
-    voiceHintEl.textContent = "Impossible d'analyser la dictée (" + (e.message||e) + "). Réessayez ou saisissez manuellement.";
-  }
-}
-
-function applyParsedDay(parsed){
-  if(parsed.convives) document.getElementById('in-convives').value = parsed.convives;
-  if(parsed.personnel !== undefined) document.getElementById('in-personnel').value = parsed.personnel;
-
-  dishRowsEl.innerHTML = '';
-
-  (parsed.entrees||[]).forEach(en=>{
-    const row = makeDishRow('Entrée');
-    dishRowsEl.appendChild(row);
-    row.querySelector('.d-nom').value = en.nom || '';
-    row.querySelector('.ent-ramequins').value = en.ramequins || 0;
-    row.querySelector('.ent-assiettes').value = en.assiettes || 0;
-    row.querySelector('.d-prep').value = en.prep_kg || 0;
-    row.querySelector('.d-reste').value = en.reste_kg || 0;
-  });
-
-  (parsed.plats||[]).forEach(pl=>{
-    const row = makeDishRow('Plat');
-    dishRowsEl.appendChild(row);
-    row.querySelector('.d-nom').value = pl.nom || '';
-    if(pl.type) row.querySelector('.d-type').value = pl.type;
-    row.querySelector('.d-prep').value = pl.prep_kg || 0;
-    row.querySelector('.d-reste').value = pl.reste_kg || 0;
-  });
-
-  if((parsed.legumes||[]).length){
-    const row = makeDishRow('Légumes');
-    dishRowsEl.appendChild(row);
-    parsed.legumes.slice(0,2).forEach((lg,i)=>{
-      row.querySelector(`.leg-nom-${i+1}`).value = lg.nom || '';
-      row.querySelector(`.leg-prep-${i+1}`).value = lg.prep_kg || 0;
-      row.querySelector(`.leg-reste-${i+1}`).value = lg.reste_kg || 0;
-    });
-  } else {
-    dishRowsEl.appendChild(makeDishRow('Légumes'));
-  }
-
-  if(parsed.fromage && (parsed.fromage.prep_nb || parsed.fromage.reste_nb)){
-    const row = makeDishRow('Fromage');
-    dishRowsEl.appendChild(row);
-    row.querySelector('.d-nom').value = 'Plateau de fromages';
-    row.querySelector('.d-prep').value = parsed.fromage.prep_nb || 0;
-    row.querySelector('.d-reste').value = parsed.fromage.reste_nb || 0;
-  }
-
-  (parsed.desserts||[]).forEach(ds=>{
-    const row = makeDishRow('Dessert');
-    dishRowsEl.appendChild(row);
-    row.querySelector('.d-nom').value = ds.nom_general || '';
-    const list = row.querySelector('.dessert-components');
-    const comps = ds.composants && ds.composants.length ? ds.composants : [{nom:'', unite:'kg', prep:0, reste:0}];
-    comps.forEach((c,i)=>{
-      if(i>0) addDessertComponent(list);
-      const block = list.children[i];
-      block.querySelector('.des-nom').value = c.nom || '';
-      block.querySelector('.des-unit').value = c.unite === 'nombre' ? 'nombre' : 'kg';
-      block.querySelector('.des-prep').value = c.prep || 0;
-      block.querySelector('.des-reste').value = c.reste || 0;
-    });
-  });
-
-  if(dishRowsEl.children.length === 0){ dishRowsEl.appendChild(makeDishRow('Légumes')); }
-}
 
 loadEntries();
 
