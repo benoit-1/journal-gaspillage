@@ -281,7 +281,7 @@ const SAMPLE_ENTRIES = [
     { cat:'Entrée',  nom:'Salade de tomates',   unit:'kg', ramequins:0,  assiettes:42, resteRamequins:0, resteAssiettes:2, prep:3.0, reste:0.2 },
     { cat:'Plat',    type:'Viande',   nom:'Rôti de porc',        unit:'kg', prep:8.5,  reste:0.9 },
     { cat:'Légumes', nom:'Haricots verts', unit:'kg', prep:2.5, reste:0.4 },
-    { cat:'Légumes', nom:'Carottes',       unit:'kg', prep:2.0, reste:0.5 },
+    { cat:'Légumes', nom:'Carottes',       unit:'boîte 5/1', prep:6, reste:1 },
     { cat:'Fromage', nom:'Plateau de fromages', unit:'nb', prep:45, reste:5 },
     { cat:'Dessert', nom:'Tarte aux pommes', unit:'kg', prep:3.2, reste:0.15 },
   ]},
@@ -422,13 +422,15 @@ function renderRowFields(row, cat){
     container.innerHTML = `
       <div class="component-block">
         <div class="field"><label>Légume 1 — nom</label><input type="text" class="leg-nom-1" placeholder="ex. haricots verts"></div>
-        <div class="field"><label>Préparé (kg)</label><input type="number" class="leg-prep-1" min="0" step="0.1"></div>
-        <div class="field"><label>Reste (kg)</label><input type="number" class="leg-reste-1" min="0" step="0.1"></div>
+        <div class="field"><label>Unité</label><select class="leg-unit-1"><option value="kg">kg</option><option value="boîte 4/4">boîtes 4/4</option><option value="boîte 3/1">boîtes 3/1</option><option value="boîte 5/1">boîtes 5/1</option></select></div>
+        <div class="field"><label>Préparé</label><input type="number" class="leg-prep-1" min="0" step="0.1" placeholder="ex. 4"></div>
+        <div class="field"><label>Reste</label><input type="number" class="leg-reste-1" min="0" step="0.1" placeholder="ex. 0.5"></div>
       </div>
       <div class="component-block">
         <div class="field"><label>Légume 2 — nom</label><input type="text" class="leg-nom-2" placeholder="ex. carottes"></div>
-        <div class="field"><label>Préparé (kg)</label><input type="number" class="leg-prep-2" min="0" step="0.1"></div>
-        <div class="field"><label>Reste (kg)</label><input type="number" class="leg-reste-2" min="0" step="0.1"></div>
+        <div class="field"><label>Unité</label><select class="leg-unit-2"><option value="kg">kg</option><option value="boîte 4/4">boîtes 4/4</option><option value="boîte 3/1">boîtes 3/1</option><option value="boîte 5/1">boîtes 5/1</option></select></div>
+        <div class="field"><label>Préparé</label><input type="number" class="leg-prep-2" min="0" step="0.1" placeholder="ex. 4"></div>
+        <div class="field"><label>Reste</label><input type="number" class="leg-reste-2" min="0" step="0.1" placeholder="ex. 0.5"></div>
       </div>
     `;
   } else if(cat === 'Dessert'){
@@ -453,7 +455,11 @@ function renderRowFields(row, cat){
     if(cfg.hasExtraCount){
       html += `<div class="field"><label>Quantité préparée (nombre)</label><input type="number" class="d-prep-nb" min="0" step="1" placeholder="ex. 40"></div>`;
     }
-    if(cfg.primaryUnit === 'kg'){
+    if(cat === 'Plat'){
+      html += `<div class="field"><label>Unité</label><select class="d-unit"><option value="kg">kg</option><option value="boîte 4/4">boîtes 4/4</option><option value="boîte 3/1">boîtes 3/1</option><option value="boîte 5/1">boîtes 5/1</option></select></div>
+               <div class="field"><label>Préparé</label><input type="number" class="d-prep" min="0" step="0.1" placeholder="ex. 4.5"></div>
+               <div class="field"><label>Reste</label><input type="number" class="d-reste" min="0" step="0.1" placeholder="ex. 0.4"></div>`;
+    } else if(cfg.primaryUnit === 'kg'){
       html += `<div class="field"><label>Préparé (kg)</label><input type="number" class="d-prep" min="0" step="0.1" placeholder="ex. 4.5"></div>
                <div class="field"><label>Reste (kg)</label><input type="number" class="d-reste" min="0" step="0.1" placeholder="ex. 0.4"></div>`;
     } else {
@@ -527,7 +533,8 @@ document.getElementById('save-entry').addEventListener('click', async ()=>{
         const prep = Math.max(0, parseFloat(r.querySelector(`.leg-prep-${i}`).value)||0);
         let reste = Math.max(0, parseFloat(r.querySelector(`.leg-reste-${i}`).value)||0);
         if(reste > prep) reste = prep;
-        if(prep > 0) rows.push({ cat:'Légumes', nom, unit:'kg', prep, reste });
+        const unit = r.querySelector(`.leg-unit-${i}`).value;
+        if(prep > 0) rows.push({ cat:'Légumes', nom, unit, prep, reste });
       }
     } else if(cat === 'Dessert'){
       const blocks = Array.from(r.querySelectorAll('.dessert-components .component-block'));
@@ -545,13 +552,14 @@ document.getElementById('save-entry').addEventListener('click', async ()=>{
     } else {
       const cfg = CATEGORY_CONFIG[cat];
       const typeEl = r.querySelector('.d-type');
+      const unitEl = r.querySelector('.d-unit');
       const prepNbEl = r.querySelector('.d-prep-nb');
       const prep = Math.max(0, parseFloat(r.querySelector('.d-prep').value)||0);
       let reste = Math.max(0, parseFloat(r.querySelector('.d-reste').value)||0);
       if(reste > prep) reste = prep;
       if(prep > 0){
         rows.push({
-          cat, type: typeEl ? typeEl.value : null, nom: parentNom, unit: cfg.primaryUnit,
+          cat, type: typeEl ? typeEl.value : null, nom: parentNom, unit: unitEl ? unitEl.value : cfg.primaryUnit,
           prep, reste, prepNb: prepNbEl ? (Math.max(0, parseInt(prepNbEl.value)||0)) : undefined,
         });
       }
@@ -578,6 +586,10 @@ function fmtG(n){
 }
 function fmtQty(value, unit){
   if(unit === 'kg') return fmtG(value*1000);
+  if(unit.startsWith('boîte')){
+    const b = Math.round(value*10)/10;
+    return b + ' ' + unit.replace('boîte', b<2 ? 'boîte' : 'boîtes');
+  }
   const r = Math.round(value*10)/10;
   return r + (r===1 ? ' pièce' : ' pièces');
 }
@@ -652,7 +664,7 @@ function computeStats(){
       const s = stats[skey];
       s.count += 1; s.sumPerPers += perPers; s.sumWastePct += wastePct; s.sumReste += r.reste;
 
-      const dkey = r.nom ? `${r.nom} (${r.cat})` : r.cat;
+      const dkey = (r.nom ? `${r.nom} (${r.cat})` : r.cat) + (r.unit.startsWith('boîte') ? ` — en ${r.unit.replace('boîte','boîtes')}` : '');
       if(!dishStats[dkey]) dishStats[dkey] = { cat:r.cat, nom:r.nom, unit:r.unit, count:0, sumPerPers:0, sumWastePct:0, sumReste:0 };
       const d = dishStats[dkey];
       d.count += 1; d.sumPerPers += perPers; d.sumWastePct += wastePct; d.sumReste += r.reste;
@@ -663,7 +675,7 @@ function computeStats(){
 }
 
 function catLabel(cat, unit){
-  return cat + (unit === 'nombre' ? ' (pièces)' : '');
+  return cat + (unit === 'nombre' ? ' (pièces)' : unit.startsWith('boîte') ? ` (${unit.replace('boîte','boîtes')})` : '');
 }
 
 function renderMoyennes(){
