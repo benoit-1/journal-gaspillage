@@ -869,11 +869,26 @@ let remoteMap = {};
 let syncMessage = '';
 let syncError = false;
 
+const DEFAULT_SYNC = {
+  config: {
+    apiKey: "AIzaSyByCDqn_Z-9qFAZKVrlxSQHBSrj_BW64ls",
+    authDomain: "journal-gaspillage.firebaseapp.com",
+    projectId: "journal-gaspillage",
+    storageBucket: "journal-gaspillage.firebasestorage.app",
+    messagingSenderId: "529209671663",
+    appId: "1:529209671663:web:ed25daf28cb33ca74e801a"
+  },
+  code: "cuisine-7K3mQ9xT"
+};
+const SYNC_OFF_KEY = 'sync-disabled';
+
 function getSyncConfig(){
   try{
     const v = localStorage.getItem(SYNC_KEY);
-    return v ? JSON.parse(v) : null;
-  }catch(e){ return null; }
+    if(v) return JSON.parse(v);
+    if(localStorage.getItem(SYNC_OFF_KEY)) return null;
+  }catch(e){}
+  return DEFAULT_SYNC;
 }
 
 function parseFirebaseConfig(text){
@@ -1014,12 +1029,14 @@ document.getElementById('sync-save').addEventListener('click', ()=>{
     return;
   }
   localStorage.setItem(SYNC_KEY, JSON.stringify({ config: cfg, code }));
+  try{ localStorage.removeItem(SYNC_OFF_KEY); }catch(e){}
   location.reload();
 });
 
 document.getElementById('sync-off').addEventListener('click', ()=>{
   if(!confirm("Déconnecter cet appareil ? Ses données restent enregistrées ici, et celles des autres appareils ne sont pas supprimées.")) return;
   localStorage.removeItem(SYNC_KEY);
+  try{ localStorage.setItem(SYNC_OFF_KEY, '1'); }catch(e){}
   location.reload();
 });
 
