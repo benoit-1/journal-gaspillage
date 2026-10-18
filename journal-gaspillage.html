@@ -82,7 +82,7 @@
 
   .dish-row{ border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:12px; border-left-width:4px; background:#fff; }
   .row-head{ display:grid; grid-template-columns:1fr 1fr auto; gap:10px; align-items:end; margin-bottom:4px; }
-  @media (max-width:700px){ .row-head{ grid-template-columns:1fr auto; } .row-head .d-nom-field{ display:none; } }
+  @media (max-width:700px){ .row-head{ grid-template-columns:1fr auto; } .row-head .d-nom-field{ grid-column:1 / -1; grid-row:2; } }
   .row-fields{
     display:flex; flex-wrap:wrap; gap:10px; margin:12px 0; padding:12px; background:var(--bg); border-left:3px solid var(--primary); border-radius:8px;
   }
@@ -527,7 +527,11 @@ function makeDishRow(presetCat){
 document.getElementById('add-row').addEventListener('click', ()=>{
   dishRowsEl.appendChild(makeDishRow());
 });
-dishRowsEl.appendChild(makeDishRow('Légumes'));
+function resetDishRows(){
+  dishRowsEl.innerHTML='';
+  ['Entrée','Plat','Légumes','Fromage','Dessert'].forEach(c=> dishRowsEl.appendChild(makeDishRow(c)));
+}
+resetDishRows();
 document.getElementById('in-date').valueAsDate = new Date();
 
 document.getElementById('save-entry').addEventListener('click', async ()=>{
@@ -600,8 +604,7 @@ document.getElementById('save-entry').addEventListener('click', async ()=>{
   await saveEntries();
   setStatus('Journée enregistrée.');
 
-  dishRowsEl.innerHTML='';
-  dishRowsEl.appendChild(makeDishRow('Légumes'));
+  resetDishRows();
   document.getElementById('in-date').valueAsDate = new Date();
   document.getElementById('in-personnel').value = 0;
   renderAll();
