@@ -270,6 +270,11 @@
         <input type="number" id="prev-personnel" min="0" value="0">
       </div>
     </div>
+    <div class="field" style="margin-top:14px;">
+      <label>Chercher un plat : l'a-t-on déjà servi ?</label>
+      <input type="text" id="prev-search" placeholder="ex. daube, poisson pané, crumble…" autocomplete="off">
+    </div>
+    <div id="prev-search-result"></div>
     <div id="prev-list"></div>
   </div>
 
@@ -770,8 +775,53 @@ function renderAll(){
 const prevResidentsEl = document.getElementById('prev-residents');
 const prevPersonnelEl = document.getElementById('prev-personnel');
 
+function normTxt(t){
+  return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/œ/g,'oe').replace(/æ/g,'ae').replace(/\s+/g,' ').trim();
+}
+function fmtDateFr(d){
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d||'');
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : d;
+}
+function escHtml(t){
+  return String(t).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+function renderPrevSearch(){
+  const box = document.getElementById('prev-search-result');
+  const q = normTxt(document.getElementById('prev-search').value);
+  if(!q){ box.innerHTML = ''; return; }
+
+  // regroupe les plats trouvés (par nom), avec les dates de service
+  const found = {};
+  entries.forEach(entry=>{
+    entry.rows.forEach(r=>{
+      if(!r.nom || !normTxt(r.nom).includes(q)) return;
+      const k = normTxt(r.nom) + '|' + r.cat;
+      if(!found[k]) found[k] = { nom:r.nom, cat:r.cat, dates:new Set() };
+      found[k].dates.add(entry.date);
+    });
+  });
+  const items = Object.values(found).sort((a,b)=> a.nom.localeCompare(b.nom));
+
+  if(items.length === 0){
+    box.innerHTML = `<div style="margin-top:8px;padding:12px 14px;border:1px solid var(--line,#dde3ec);border-radius:12px;background:#f4f7fb;line-height:1.6;"><b>Jamais servi</b> : aucun plat enregistré ne contient « ${escHtml(document.getElementById('prev-search').value.trim())} ».</div>`;
+    return;
+  }
+  box.innerHTML = items.map(it=>{
+    const dates = Array.from(it.dates).sort().reverse();
+    const n = dates.length;
+    const last = fmtDateFr(dates[0]);
+    const others = dates.slice(1, 6).map(fmtDateFr);
+    return `<div style="margin-top:8px;padding:12px 14px;border:1px solid var(--line,#dde3ec);border-radius:12px;background:#f4f7fb;line-height:1.6;">
+      <span class="cat-dot" style="background:${CATEGORY_COLORS[it.cat]||'#999'}"></span><b>${escHtml(it.nom)}</b> (${it.cat})<br>
+      Déjà servi <b>${n} fois</b> · dernière fois le <b>${last}</b>${others.length ? `<br><span style="color:var(--muted,#667);">Avant : ${others.join(', ')}${n>6?' …':''}</span>` : ''}
+    </div>`;
+  }).join('');
+}
+
 function renderPrevision(){
   renderPrevisionList();
+  renderPrevSearch();
 }
 
 function renderPrevisionList(){
@@ -784,6 +834,7 @@ function renderPrevisionList(){
 
   const dishes = Object.entries(dishStats)
     .filter(([,d]) => d.nom)
+    .filter(([key]) => { const q = normTxt(document.getElementById('prev-search').value); return !q || normTxt(key).includes(q); })
     .map(([key,d]) => ({
       key,
       cat: d.cat,
@@ -794,6 +845,10 @@ function renderPrevisionList(){
     }))
     .sort((a,b)=> a.cat.localeCompare(b.cat) || a.key.localeCompare(b.key));
 
+  if(dishes.length === 0 && normTxt(document.getElementById('prev-search').value)){
+    listEl.innerHTML = '';
+    return;
+  }
   if(dishes.length === 0){
     listEl.innerHTML = `<div class="empty">Pas encore d'historique — enregistrez quelques journées pour voir apparaître vos plats ici.</div>`;
     return;
@@ -814,6 +869,7 @@ function renderPrevisionList(){
 
 prevResidentsEl.addEventListener('input', renderPrevisionList);
 prevPersonnelEl.addEventListener('input', renderPrevisionList);
+document.getElementById('prev-search').addEventListener('input', renderPrevision);
 
 document.getElementById('reset-all').addEventListener('click', async ()=>{
   if(!confirm(syncDb ? 'Effacer tout le journal sur TOUS vos appareils synchronisés ? Cette action est irréversible.' : 'Effacer tout le journal ? Cette action est irréversible.')) return;
